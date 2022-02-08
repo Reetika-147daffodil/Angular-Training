@@ -15,6 +15,4 @@ export class FetchDataService {
     return this.http.get('http://localhost:3000/Employees');
    }
 
-
-
 }

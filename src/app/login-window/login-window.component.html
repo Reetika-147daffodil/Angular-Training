@@ -1,0 +1,10 @@
+<strong>Login Page</strong>
+<br>
+
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()" >
+    <input type="text" placeholder="Employee Code" formControlName="Employee_Code">
+    <br> <br>
+    <input type="email" placeholder="youremail@gmail.com" formControlName="Email" name="Email">
+    <br> <br>
+    <input type="submit" name="submit">
+</form>
