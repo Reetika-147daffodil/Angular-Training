@@ -3,6 +3,7 @@ import { FetchDataService } from '../fetch-data.service';
 import { Observable } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -22,10 +23,7 @@ export class TableComponent implements OnInit {
     this.service.get_employees().subscribe(data => {
    
     this.dataSource=data;
-
-    
-
-      
+    console.log(data);
       
      });
   }

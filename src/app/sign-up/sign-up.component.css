@@ -1,11 +1,4 @@
-
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .form{
+.form{
 
     
     padding: 50px;
@@ -13,22 +6,27 @@
     margin-left: 35%;
   }
   .login{
-    padding: 25px;
+    padding: 15px;
     font-size: 30px;
     margin-left: 45%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
-  .i{
+  .i,.i1{
     padding: 12px;
     background-color: aliceblue;
     width: 25vw;
     border-radius: 2px ;
     
   }
+  .i1{
+      width: 12vw;
+      margin: 10px;
+  }
   #login,#signup{
     width: 25vw;
   }
+  #or{
+    margin-left: 20%;
+  }
  
- #or{
-  margin-left: 45%;
- }
+ 

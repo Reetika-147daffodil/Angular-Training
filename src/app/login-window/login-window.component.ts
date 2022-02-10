@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../auth-service.service';
+
+
 
 @Component({
   selector: 'app-login-window',
@@ -7,20 +11,39 @@ import { FormGroup, FormControl} from '@angular/forms';
   styleUrls: ['./login-window.component.css']
 })
 export class LoginWindowComponent implements OnInit {
-
-  constructor() { }
+  val:any;
+  error="";
+  constructor(private auth:AuthServiceService,private router:Router) { }
 
   ngOnInit(): void {
   }
   loginForm=new FormGroup(
     {
-      Employee_Code:new FormControl(''),
-      Email:new FormControl('')
+    
+      email:new FormControl(''),
+      password:new FormControl(''),
     }
   )
   loginUser()
+  { 
+    this.val=this.loginForm.value;
+
+   this.auth.getAuthentication({"email":this.loginForm.value.email,"password":this.loginForm.value.password})
+   .subscribe(response=>{
+     console.log(response);
+     this.router.navigate(["table"]);
+   },
+   (err)=>{
+    console.log(err.error.error);
+    this.error = err.error.error.message;
+  }
+   )
+  
+  }
+
+  signUp()
   {
-    console.warn(this.loginForm.value);
+    return this.router.navigate(["signup"]);
   }
 
 

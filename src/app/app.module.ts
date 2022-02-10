@@ -18,6 +18,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { EmployeeImageComponent } from './employee-image/employee-image.component';
+import { FirebaseDatatableComponent } from './firebase-datatable/firebase-datatable.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogBoxData } from './firebase-datatable/firebase-datatable.component';
+
+
+
+
 
 
 
@@ -29,6 +39,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SideNavComponent,
     WelcomeComponent,
     LoginWindowComponent,
+    SignUpComponent,
+    EmployeeImageComponent,
+    FirebaseDatatableComponent,
+    DialogBoxData
     
   ],
   imports: [
@@ -46,7 +60,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule ,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,4 +15,10 @@ export class FetchDataService {
     return this.http.get('http://localhost:3000/Employees');
    }
 
+   get_firebaseData()
+   {
+    return this.http.get('https://firestore.googleapis.com/v1/projects/employee-dashboard-3a0bc/databases/(default)/documents/employee-details');
+   }
+
+
 }
