@@ -1,3 +1,9 @@
 .example-container{
     size: 100%;
 }
+#navlist{
+    height: 100%;
+}
+.link{
+    color: white;
+}

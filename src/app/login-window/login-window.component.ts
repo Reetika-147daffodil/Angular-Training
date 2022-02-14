@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { AuthServiceService } from '../auth-service.service';
+
+
 
 @Component({
   selector: 'app-login-window',
@@ -7,21 +12,48 @@ import { FormGroup, FormControl} from '@angular/forms';
   styleUrls: ['./login-window.component.css']
 })
 export class LoginWindowComponent implements OnInit {
-
-  constructor() { }
+  val:any;
+  error="";
+  constructor(private auth:AuthServiceService,private router:Router) { }
 
   ngOnInit(): void {
   }
   loginForm=new FormGroup(
     {
-      Employee_Code:new FormControl(''),
-      Email:new FormControl('')
+    
+      email:new FormControl(''),
+      password:new FormControl(''),
     }
   )
   loginUser()
-  {
-    console.warn(this.loginForm.value);
+  { 
+    this.val=this.loginForm.value;
+
+   this.auth.getAuthentication({"email":this.loginForm.value.email,"password":this.loginForm.value.password})
+   .pipe(
+     map(user=>{
+      if (user && user.idToken) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      }
+     })
+   )
+   .subscribe(response=>{
+
+     console.log(response);
+     this.router.navigate(["firebase-data"]);
+   },
+   (err)=>{
+    console.log(err.error.error);
+    this.error = err.error.error.message;
+  }
+   )
+  
   }
 
+  signUp()
+  {
+    return this.router.navigate(["signup"]);
+  }
 
+  
 }

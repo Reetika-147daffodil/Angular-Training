@@ -1,10 +1,23 @@
-<strong>Login Page</strong>
-<br>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="background">
+    <h3 class="login">Login</h3>
+    <br>
+    
+    
+    <div class="form">
+        <h3 *ngIf="error" class="p-3 mb-3 bg-danger text-white error">{{error}} <span class="material-icons">error</span></h3>
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()"  >
+            <input type="email" placeholder="Email" class="i" formControlName="email">
+            <br> <br>
+            <input type="password" placeholder="Password" class="i" formControlName="password" name="Email">
+            <br> <br>
+            <input class="btn btn-primary" id="login"  type="submit" value="Login">
+            <br>
+            <h3 id="or">Or</h3>
+        </form>
+        <button class="btn btn-success" id="signup"  (click)="signUp()" >Sign Up</button>
+    
+    </div>
+</div>
 
-<form [formGroup]="loginForm" (ngSubmit)="loginUser()" >
-    <input type="text" placeholder="Employee Code" formControlName="Employee_Code">
-    <br> <br>
-    <input type="email" placeholder="youremail@gmail.com" formControlName="Email" name="Email">
-    <br> <br>
-    <input type="submit" name="submit">
-</form>
+
