@@ -19,6 +19,10 @@ export class FetchDataService {
    {
     return this.http.get('https://firestore.googleapis.com/v1/projects/employee-dashboard-3a0bc/databases/(default)/documents/employee-details');
    }
+   post_firebaseData(data:{})
+   {
+    return this.http.post('https://firestore.googleapis.com/v1/projects/employee-dashboard-3a0bc/databases/(default)/documents/employee-details',data);
+   }
 
 
 }

@@ -20,14 +20,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { EmployeeImageComponent } from './employee-image/employee-image.component';
+
 import { FirebaseDatatableComponent } from './firebase-datatable/firebase-datatable.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogBoxData } from './firebase-datatable/firebase-datatable.component';
-
-
-
-
+import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { APIInterceptor } from './API.Interceptor';
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -40,10 +40,10 @@ import { DialogBoxData } from './firebase-datatable/firebase-datatable.component
     WelcomeComponent,
     LoginWindowComponent,
     SignUpComponent,
-    EmployeeImageComponent,
-    FirebaseDatatableComponent,
-    DialogBoxData
     
+    FirebaseDatatableComponent,
+    DialogBoxData,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +62,15 @@ import { DialogBoxData } from './firebase-datatable/firebase-datatable.component
     MatInputModule ,
     MatCheckboxModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    CommonModule,
+
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: APIInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

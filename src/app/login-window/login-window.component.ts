@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { AuthServiceService } from '../auth-service.service';
 
 
@@ -29,9 +30,17 @@ export class LoginWindowComponent implements OnInit {
     this.val=this.loginForm.value;
 
    this.auth.getAuthentication({"email":this.loginForm.value.email,"password":this.loginForm.value.password})
+   .pipe(
+     map(user=>{
+      if (user && user.idToken) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      }
+     })
+   )
    .subscribe(response=>{
+
      console.log(response);
-     this.router.navigate(["table"]);
+     this.router.navigate(["firebase-data"]);
    },
    (err)=>{
     console.log(err.error.error);
@@ -46,5 +55,5 @@ export class LoginWindowComponent implements OnInit {
     return this.router.navigate(["signup"]);
   }
 
-
+  
 }
